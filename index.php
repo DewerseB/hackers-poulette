@@ -12,7 +12,7 @@
         <div class="container">
             <h1 class="title has-text-centered">Contact us</h1>
             <form method="POST">
-                
+
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
                         <label class="label">Name</label>
@@ -20,15 +20,27 @@
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <input class="input" type="text" placeholder="Firstname">
+                                <input class="input" type="text" name="firstname" value="<?php echo isset($_POST['firstname']) ? $_POST['firstname'] : '' ?>" placeholder="Firstname">
                             </div>
-                            <!-- <p class="help is-danger">This field is required</p> -->
+                            <?php 
+                                if (isset($_POST['firstname'])) {
+                                    if ($_POST['firstname'] === '') {
+                                        echo '<p class="help has-text-white">This field is required</p>';
+                                    }
+                                }
+                            ?>
                         </div>
                         <div class="field">
                             <div class="control">
-                                <input class="input" type="text" placeholder="Lastname">
+                                <input class="input" type="text" name="lastname" value="<?php echo isset($_POST['lastname']) ? $_POST['lastname'] : '' ?>" placeholder="Lastname">
                             </div>
-                            <!-- <p class="help is-danger">This field is required</p> -->
+                            <?php 
+                                if (isset($_POST['lastname'])) {
+                                    if ($_POST['lastname'] === '') {
+                                        echo '<p class="help has-text-white">This field is required</p>';
+                                    }
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -41,14 +53,19 @@
                         <div class="field">
                             <div class="control">
                                 <label class="radio">
-                                    <input type="radio" name="gender">
+                                    <input type="radio" name="gender" value="m" <?php echo (isset($_POST['gender']) && $_POST['gender'] === 'm') ? 'checked' : '' ?>>
                                     M
                                 </label>
                                 <label class="radio">
-                                    <input type="radio" name="gender">
+                                    <input type="radio" name="gender" value="f" <?php echo (isset($_POST['gender']) && $_POST['gender'] === 'f') ? 'checked' : '' ?>>
                                     F
                                 </label>
                             </div>
+                            <?php 
+                                if (isset($_POST['submit']) && !isset($_POST['gender'])) {
+                                    echo '<p class="help has-text-white">This field is required</p>';
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -60,9 +77,15 @@
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <input class="input" type="text" placeholder="john-doe@none.com">
+                                <input class="input" type="email" name="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>" placeholder="john-doe@none.com">
                             </div>
-                            <!-- <p class="help is-danger">This field is required</p> -->
+                            <?php 
+                                if (isset($_POST['email'])) {
+                                    if ($_POST['email'] === '') {
+                                        echo '<p class="help has-text-white">This field is required</p>';
+                                    }
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -74,9 +97,15 @@
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <input class="input" type="text" placeholder="Belgium">
+                                <input class="input" type="text" name="country" value="<?php echo isset($_POST['country']) ? $_POST['country'] : '' ?>" placeholder="Belgium">
                             </div>
-                            <!-- <p class="help is-danger">This field is required</p> -->
+                            <?php 
+                                if (isset($_POST['country'])) {
+                                    if ($_POST['country'] === '') {
+                                        echo '<p class="help has-text-white">This field is required</p>';
+                                    }
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -89,10 +118,10 @@
                         <div class="field">
                             <div class="control">
                                 <div class="select">
-                                <select>
-                                    <option>Other</option>
-                                    <option>Orders & Shipping</option>
-                                    <option>Returns & Refunds</option>
+                                <select name="subject">
+                                    <option value="other">Other</option>
+                                    <option value="orders" <?php echo (isset($_POST['subject']) && $_POST['subject'] === 'orders') ? 'selected' : '' ?>>Orders & Shipping</option>
+                                    <option value="returns" <?php echo (isset($_POST['subject']) && $_POST['subject'] === 'returns') ? 'selected' : '' ?>>Returns & Refunds</option>
                                 </select>
                                 </div>
                             </div>
@@ -107,8 +136,15 @@
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <textarea class="textarea" placeholder="Type your message here"></textarea>
+                                <textarea class="textarea" name="message" placeholder="Type your message here"><?php echo isset($_POST['message']) ? $_POST['message'] : '' ?></textarea>
                             </div>
+                            <?php 
+                                if (isset($_POST['message'])) {
+                                    if ($_POST['message'] === '') {
+                                        echo '<p class="help has-text-white">This field is required</p>';
+                                    }
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>
