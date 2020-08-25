@@ -1,0 +1,25 @@
+@font-face {
+    font-family: bellotaRegular;
+    src: url(../font/Bellota-Regular.otf);
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    font-family: bellotaRegular;
+    background-color: #0d8187;
+    color: #303030;
+}
+
+.input::placeholder, .textarea::placeholder {
+    color: #303030;
+    opacity: 0.6;
+}
+
+.logo {
+    height: 200px;
+    width: auto;
+}
