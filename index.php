@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Hackers Poulette - Contact us</title>
     <link rel="stylesheet" href="./assets/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
@@ -118,11 +118,15 @@
                         <div class="field">
                             <div class="control">
                                 <div class="select">
-                                <select name="subject">
-                                    <option value="other">Other</option>
-                                    <option value="orders" <?php echo (isset($_POST['subject']) && $_POST['subject'] === 'orders') ? 'selected' : '' ?>>Orders & Shipping</option>
-                                    <option value="returns" <?php echo (isset($_POST['subject']) && $_POST['subject'] === 'returns') ? 'selected' : '' ?>>Returns & Refunds</option>
-                                </select>
+                                    <select name="subject">
+                                        <?php
+                                            include './assets/php/config.php';
+                                            foreach ($formSubjects as $label => $value) {
+                                                $isSelected = (isset($_POST['subject']) && $_POST['subject'] === $value) ? ' selected' : '';
+                                                echo '<option value=' . $value . $isSelected . '>' . $label . '</option>';
+                                            }
+                                        ?>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -163,5 +167,6 @@
             <img src="./assets/img/hackers-poulette-logo.png" alt="Hackers Poulette logo" class="logo">
         </div>
     </section>
+    <?php include './assets/php/form.php'?>
 </body>
 </html>
