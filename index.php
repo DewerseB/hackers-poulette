@@ -120,7 +120,7 @@
                                 <div class="select">
                                     <select name="subject">
                                         <?php
-                                            include './assets/php/config.php';
+                                            include './assets/php/form-config.php';
                                             foreach ($formSubjects as $label => $value) {
                                                 $isSelected = (isset($_POST['subject']) && $_POST['subject'] === $value) ? ' selected' : '';
                                                 echo '<option value=' . $value . $isSelected . '>' . $label . '</option>';

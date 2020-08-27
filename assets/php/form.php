@@ -7,7 +7,7 @@
     require __DIR__ . '/vendor/PHPMailer-6.1.7/src/PHPMailer.php';
     require __DIR__ . '/vendor/PHPMailer-6.1.7/src/SMTP.php';
 
-    include 'config.php';
+    include 'form-config.php';
 
     class ContactForm {
         function __construct($post) {
@@ -50,24 +50,56 @@
                     break;
                 }
             }
+            return true;
+        }
+
+        function getFullName() {
+            return $this->firstname . " " . $this->lastname;
         }
     }
 
-    if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['gender']) && isset($_POST['email']) && isset($_POST['country']) && isset($_POST['subject']) && isset($_POST['message'])) {
+    if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['gender']) && isset($_POST['email']) && isset($_POST['country']) && isset($_POST['subject']) && isset($_POST['message']) && isset($_POST['submit'])) {
         
         $form = new ContactForm($_POST);
+        $formIsValid = false;
 
         try {
             $form->validateForm($formCountries, $formSubjects);
+            $formIsValid = true;
             print_r($form);
         } catch (Exception $e) {
             print_r("Cannot validate the form:<br>" . $e->getMessage());
         }
 
-        
+        if ($formIsValid) try {
 
+            $configSMTP = include('smtp-config.php');
+            $mail = new PHPMailer(true);
 
-        //$mail = new PHPMailer(true);
+            //Server settings
+            //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                    // Enable verbose debug output
+            $mail->isSMTP();                                            // Send using SMTP
+            $mail->Host       = $configSMTP['host'];                    // Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+            $mail->Username   = $configSMTP['username'];                // SMTP username
+            $mail->Password   = $configSMTP['password'];                // SMTP password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+            $mail->Port       = $configSMTP['port'];                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+            $mail->addAddress($configSMTP['mail']);                     // Add a recipient            
+
+            // Content
+            $mail->setFrom($form->email, $form->getFullName());
+            $mail->isHTML(true);                                  // Set email format to HTML
+            $mail->Subject = $form->subject;
+            $mail->Body    = $form->message;
+            $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+            //$mail->send();
+            //print_r($mail);
+            echo 'Message has been sent';
+        } catch (Exception $e) {
+            print_r("Cannot send the mail:<br>" . $e->getMessage());
+        }
 
     }
 
