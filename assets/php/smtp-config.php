@@ -1,9 +1,9 @@
 <?php
     return array(
-        'host' => 'smtp1.example.com',
-        'username' => 'root',
-        'password' => 'user@example.com',
-        'port' => 587,
-        'mail' => 'to@test.com',
+        'host' => 'smtp.gmail.com',
+        'username' => '',
+        'password' => '',
+        'port' => 465,
+        'mail' => '',
     );
 ?>

@@ -1,13 +1,14 @@
 <?php
 
-    // use PHPMailer\PHPMailer\PHPMailer;
-    // use PHPMailer\PHPMailer\Exception;
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+    use PHPMailer\PHPMailer\SMTP;
 
-    // require __DIR__ . '/vendor/PHPMailer-6.1.7/src/Exception.php';
-    // require __DIR__ . '/vendor/PHPMailer-6.1.7/src/PHPMailer.php';
-    // require __DIR__ . '/vendor/PHPMailer-6.1.7/src/SMTP.php';
+    require __DIR__ . '/vendor/PHPMailer-6.1.7/src/Exception.php';
+    require __DIR__ . '/vendor/PHPMailer-6.1.7/src/PHPMailer.php';
+    require __DIR__ . '/vendor/PHPMailer-6.1.7/src/SMTP.php';
 
-    require __DIR__ . '/vendor/SendGrid/sendgrid-php.php';
+    //require __DIR__ . '/vendor/SendGrid/sendgrid-php.php';
 
     include 'form-config.php';
 
@@ -77,59 +78,56 @@
 
             $configSMTP = include('smtp-config.php');
             
-            $email = new \SendGrid\Mail\Mail(); 
-            $email->setFrom($form->email, $form->getFullName());
-            $email->setSubject($form->subject);
-            $email->addTo("bastien.dewerse@gmail.com", "B.D.");
-            $email->addContent("text/plain", "and easy to do anywhere, even with PHP");
-            $email->addContent(
-                "text/html", "<strong>and easy to do anywhere, even with PHP</strong>"
-            );
-            $sendgrid = new \SendGrid(getenv('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'));
-            
-            
-            $response = $sendgrid->send($email);
-            print $response->statusCode() . "\n";
-            print_r($response->headers());
-            print $response->body() . "\n";
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            // $mail = new PHPMailer(true);
+           
+            $mail = new PHPMailer(true);
 
-            // //Server settings
-            // //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                    // Enable verbose debug output
-            // $mail->isSMTP();                                            // Send using SMTP
-            // $mail->Host       = $configSMTP['host'];                    // Set the SMTP server to send through
-            // $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-            // $mail->Username   = $configSMTP['username'];                // SMTP username
-            // $mail->Password   = $configSMTP['password'];                // SMTP password
-            // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-            // $mail->Port       = $configSMTP['port'];                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
-            // $mail->addAddress($configSMTP['mail']);                     // Add a recipient            
+            //Server settings
+            //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                    // Enable verbose debug output
+            $mail->isSMTP();                                            // Send using SMTP
+            $mail->Host       = $configSMTP['host'];                    // Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+            $mail->Username   = $configSMTP['username'];                // SMTP username
+            $mail->Password   = $configSMTP['password'];                // SMTP password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+            $mail->Port       = $configSMTP['port'];                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+            $mail->addAddress($configSMTP['mail']);                     // Add a recipient            
 
-            // // Content
-            // $mail->setFrom($form->email, $form->getFullName());
-            // $mail->isHTML(true);                                  // Set email format to HTML
-            // $mail->Subject = $form->subject;
-            // $mail->Body    = $form->message;
-            // //$mail->AltBody = $form->message;
+            // Content
+            $mail->setFrom($form->email, $form->getFullName());
+            //$mail->isHTML(true);                                  // Set email format to HTML
+            $mail->Subject = $form->subject;
+            $mail->Body    = $form->message;
+            //$mail->AltBody = $form->message;
 
-            // //$mail->send();
-            // //print_r($mail);
+            $mail->send();
+            //print_r($mail);
+
+
+
+
+
+
+            // $email = new \SendGrid\Mail\Mail(); 
+            // $email->setFrom($form->email, $form->getFullName());
+            // $email->setSubject($form->subject);
+            // $email->addTo("bastien.dewerse@gmail.com", "B.D.");
+            // $email->addContent("text/plain", "and easy to do anywhere, even with PHP");
+            // $email->addContent(
+            //     "text/html", "<strong>and easy to do anywhere, even with PHP</strong>"
+            // );
+            // $sendgrid = new \SendGrid(getenv('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'));
+            
+            
+            // $response = $sendgrid->send($email);
+            // print $response->statusCode() . "\n";
+            // print_r($response->headers());
+            // print $response->body() . "\n";
+
+
             echo 'Message has been sent';
         } catch (Exception $e) {
-            echo 'Caught exception: '. $e->getMessage() ."\n";
-            //print_r("Cannot send the mail:<br>" . $e->getMessage());
+            //echo 'Caught exception: '. $e->getMessage() ."\n";
+            print_r("Cannot send the mail:<br>" . $e->getMessage());
         }
 
     }
