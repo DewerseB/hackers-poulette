@@ -77,7 +77,7 @@
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <input class="input" type="email" name="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>" placeholder="john-doe@none.com">
+                                <input class="input" type="email" name="email" maxlength="254" value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>" placeholder="john-doe@none.com">
                             </div>
                             <?php 
                                 if (isset($_POST['email'])) {
@@ -140,7 +140,7 @@
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <textarea class="textarea" name="message" placeholder="Type your message here"><?php echo isset($_POST['message']) ? $_POST['message'] : '' ?></textarea>
+                                <textarea class="textarea" name="message" maxlength="1024" placeholder="Type your message here ... 1024 characters max."><?php echo isset($_POST['message']) ? $_POST['message'] : '' ?></textarea>
                             </div>
                             <?php 
                                 if (isset($_POST['message'])) {
