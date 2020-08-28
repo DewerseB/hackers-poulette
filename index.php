@@ -97,7 +97,18 @@
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <input class="input" type="text" name="country" value="<?php echo isset($_POST['country']) ? $_POST['country'] : '' ?>" placeholder="Belgium">
+                                <div class="select">
+                                    <select name="country">
+                                        <?php
+                                            include './assets/php/form-config.php';
+                                            foreach ($formCountries as $label => $value) {
+                                                $isSelected = (isset($_POST['country']) && $_POST['country'] === $value) ? ' selected' : '';
+                                                echo '<option value=' . $value . $isSelected . '>' . $value . '</option>';
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+                                <!-- <input class="input" type="text" name="country" value="<?php echo isset($_POST['country']) ? $_POST['country'] : '' ?>" placeholder="Belgium"> -->
                             </div>
                             <?php 
                                 if (isset($_POST['country'])) {
@@ -152,6 +163,8 @@
                         </div>
                     </div>
                 </div>
+
+                <input class="honeypot" type="text" name="honeypot">
 
                 <div class="field has-text-centered">
                     <div class="control">

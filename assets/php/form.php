@@ -45,6 +45,9 @@
                     case 'message':
                         if (strlen($value) > 1024) throw new Exception($field . " must have 1024 characters max.");
                     break;
+                    case 'honeypot':
+                        if ($value !== '') throw new Exception("Bot detected!");
+                    break;
                     case 'submit':
                         if ($value !== 'Submit') throw new Exception("Something went wrong with submit.");
                     break;
@@ -61,11 +64,11 @@
         }
     }
 
-    if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['gender']) && isset($_POST['email']) && isset($_POST['country']) && isset($_POST['subject']) && isset($_POST['message']) && isset($_POST['submit'])) {
+    if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['gender']) && isset($_POST['email']) && isset($_POST['country']) && isset($_POST['subject']) && isset($_POST['message']) && isset($_POST['honeypot']) && isset($_POST['submit'])) {
         
         $form = new ContactForm($_POST);
         $formIsValid = false;
-
+        echo realpath('') . '<br>';
         try {
             $form->validateForm($formCountries, $formSubjects);
             $formIsValid = true;
@@ -76,7 +79,7 @@
 
         if ($formIsValid) try {
 
-            $configSMTP = include('smtp-config.php');
+            $configSMTP = include('admin/smtp-config.php');
             
            
             $mail = new PHPMailer(true);

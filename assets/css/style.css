@@ -14,6 +14,10 @@ body {
     color: #303030;
 }
 
+.honeypot {
+    display: none;
+}
+
 .input::placeholder, .textarea::placeholder {
     color: #303030;
     opacity: 0.6;

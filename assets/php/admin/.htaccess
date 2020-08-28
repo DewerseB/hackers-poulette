@@ -1,0 +1,4 @@
+AuthName "You probably shouldn't be here"
+AuthType Basic
+AuthUserFile "/home/site/www/admin/.htpasswd"
+Require valid-user

@@ -2,7 +2,7 @@
     return array(
         'host' => 'smtp.gmail.com',
         'username' => '',
-        'password' => '',
+        'password' => '$1$oF0cyafb$yb9YEcEildaixxgZaNCS6/',
         'port' => 465,
         'mail' => '',
     );
