@@ -20,7 +20,7 @@
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <input class="input" type="text" name="firstname" value="<?php echo isset($_POST['firstname']) ? $_POST['firstname'] : '' ?>" placeholder="Firstname">
+                                <input class="input" type="text" name="firstname" maxlength="128" value="<?php echo isset($_POST['firstname']) ? $_POST['firstname'] : '' ?>" placeholder="Firstname">
                             </div>
                             <?php 
                                 if (isset($_POST['firstname'])) {
@@ -32,7 +32,7 @@
                         </div>
                         <div class="field">
                             <div class="control">
-                                <input class="input" type="text" name="lastname" value="<?php echo isset($_POST['lastname']) ? $_POST['lastname'] : '' ?>" placeholder="Lastname">
+                                <input class="input" type="text" name="lastname" maxlength="128" value="<?php echo isset($_POST['lastname']) ? $_POST['lastname'] : '' ?>" placeholder="Lastname">
                             </div>
                             <?php 
                                 if (isset($_POST['lastname'])) {
@@ -140,6 +140,13 @@
                                     </select>
                                 </div>
                             </div>
+                            <?php 
+                                if (isset($_POST['country'])) {
+                                    if ($_POST['country'] === '') {
+                                        echo '<p class="help has-text-white">This field is required</p>';
+                                    }
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -175,11 +182,17 @@
             </form>
         </div>
     </section>
-    <section class="section has-text-centered">
-        <div class="container">
-            <img src="./assets/img/hackers-poulette-logo.png" alt="Hackers Poulette logo" class="logo">
+    <section class="section">
+        <div class="columns has-text-centered">
+            <div class="column is-4 is-offset-4 has-text-white">
+                <?php include './assets/php/form.php'?>
+            </div>
         </div>
     </section>
-    <?php include './assets/php/form.php'?>
 </body>
+<footer class="footer">
+    <div class="content has-text-centered">
+        <img src="./assets/img/hackers-poulette-logo.png" alt="Hackers Poulette logo" class="logo">
+    </div>
+</footer>
 </html>
