@@ -21,8 +21,7 @@
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <label for="form-firstname"></label>
-                                <label class="hide" for="form-firstname">Firstname</label>
+                                <label class="screen-reader-only" for="form-firstname">Firstname</label>
                                 <input class="input" id="form-firstname" type="text" name="firstname" maxlength="128" value="<?php echo isset($_POST['firstname']) ? $_POST['firstname'] : '' ?>" placeholder="Firstname" required>
                             </div>
                             <?php 
@@ -35,8 +34,7 @@
                         </div>
                         <div class="field">
                             <div class="control">
-                                <label for="form-lastname"></label>
-                                <label class="hide" for="form-lastname">Lastname</label>
+                                <label class="screen-reader-only" for="form-lastname">Lastname</label>
                                 <input class="input" id="form-lastname" type="text" name="lastname" maxlength="128" value="<?php echo isset($_POST['lastname']) ? $_POST['lastname'] : '' ?>" placeholder="Lastname" required>
                             </div>
                             <?php 

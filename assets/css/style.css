@@ -29,6 +29,14 @@ body {
     display: none;
 }
 
+.screen-reader-only {
+    position:absolute;
+    top:-10000px;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+}
+
 .input::placeholder, .textarea::placeholder {
     color: #30303099;
 }
