@@ -96,6 +96,7 @@
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
             $mail->Port       = $configSMTP['port'];                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
             $mail->addAddress($configSMTP['mail']);                     // Add a recipient            
+            $mail->addAddress($form->email, $form->getFullName());      // Add a recipient            
 
             // Content
             $mail->setFrom($form->email, $form->getFullName());
@@ -106,8 +107,12 @@
 
             $mail->send();
             //print_r($mail);
+            
+            foreach($_POST as $field) {
+                $_POST[$field] = '';
+            }
 
-            print_r("<p class='has-background-success-dark'>Mail sent.</p>");
+            print_r("<p class='has-background-success-dark'>Form sent.<br>We sent you a confirmation email.</p>");
         } catch (Exception $e) {
             //echo 'Caught exception: '. $e->getMessage() ."\n";
             print_r("<p class='has-background-danger-dark'>Cannot send the mail:<br>" . $e->getMessage() . "</p>");

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hackers Poulette Contact Form">
     <title>Hackers Poulette - Contact us</title>
     <link rel="stylesheet" href="./assets/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
@@ -20,6 +21,7 @@
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
+                                <label for="form-firstname"></label>
                                 <label class="hide" for="form-firstname">Firstname</label>
                                 <input class="input" id="form-firstname" type="text" name="firstname" maxlength="128" value="<?php echo isset($_POST['firstname']) ? $_POST['firstname'] : '' ?>" placeholder="Firstname" required>
                             </div>
@@ -33,6 +35,7 @@
                         </div>
                         <div class="field">
                             <div class="control">
+                                <label for="form-lastname"></label>
                                 <label class="hide" for="form-lastname">Lastname</label>
                                 <input class="input" id="form-lastname" type="text" name="lastname" maxlength="128" value="<?php echo isset($_POST['lastname']) ? $_POST['lastname'] : '' ?>" placeholder="Lastname" required>
                             </div>
@@ -177,7 +180,7 @@
 
                 <div class="field has-text-centered">
                     <div class="control">
-                        <input type="submit" name="submit" value="Submit" class="button">
+                        <input class="button" type="submit" name="submit" value="Submit">
                     </div>
                 </div>
 
