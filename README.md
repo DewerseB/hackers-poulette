@@ -24,8 +24,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-The project is a form gathering, sanitizing, validating then sending via mail informations to contact the support of a company.
-Challenge made in 4 days by Bastien Dewerse at [BeCode](https://becode.org/)
+The project is a form gathering, sanitizing, validating then sending via mail informations to contact the support of a company.<br />
+Challenge made in 4 days by Bastien Dewerse at [BeCode](https://becode.org/)<br />
 Deadline: 28/08/2020
 
 ### The mission
