@@ -3,7 +3,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-    <img src="./assets/img/hackers-poulette-logo.png" alt="Logo" width="200" height="200">
+    <img src="./assets/img/hackers-poulette-logo.png" alt="Logo" height="200">
 </p>
 
 
@@ -83,7 +83,7 @@ And fill the fiels of the form.
 An email will be sent to the mail address you inputed and a gmail address used as the support.
 
 Fields are sanitized and validated before being sent as mail.
-<br /><img src="./assets/img/preview.png" alt="Error preview" width="400" height="400">
+<br /><img src="./assets/img/preview.png" alt="Error preview" width="500">
 
 
 
