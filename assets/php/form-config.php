@@ -5,7 +5,6 @@ $formSubjects = array(
     'Other' => 'other',
     'Orders & Shipping' => 'orders',
     'Returns & Refunds' => 'returns',
-    'Test Label' => 'test',
 );
 
 $formCountries = array(
