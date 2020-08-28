@@ -12,6 +12,11 @@
     <section class="section">
         <div class="container">
             <h1 class="title has-text-centered">Contact us</h1>
+            <div class="columns has-text-centered">
+                <div class="column is-4 is-offset-4 has-text-white">
+                    <?php include './assets/php/form.php'?>
+                </div>
+            </div>
             <form method="POST">
 
                 <div class="field is-horizontal">
@@ -27,7 +32,7 @@
                             <?php 
                                 if (isset($_POST['firstname'])) {
                                     if ($_POST['firstname'] === '') {
-                                        echo '<p class="help has-text-white has-background-danger-dark">This field is required</p>';
+                                        echo '<p class="help is-size-6 has-text-white has-background-danger-dark">This field is required</p>';
                                     }
                                 }
                             ?>
@@ -40,7 +45,7 @@
                             <?php 
                                 if (isset($_POST['lastname'])) {
                                     if ($_POST['lastname'] === '') {
-                                        echo '<p class="help has-text-white has-background-danger-dark">This field is required</p>';
+                                        echo '<p class="help is-size-6 has-text-white has-background-danger-dark">This field is required</p>';
                                     }
                                 }
                             ?>
@@ -68,7 +73,7 @@
                             </div>
                             <?php 
                                 if (isset($_POST['submit']) && !isset($_POST['gender'])) {
-                                    echo '<p class="help has-text-white has-background-danger-dark">This field is required</p>';
+                                    echo '<p class="help is-size-6 has-text-white has-background-danger-dark">This field is required</p>';
                                 }
                             ?>
                         </div>
@@ -87,7 +92,9 @@
                             <?php 
                                 if (isset($_POST['email'])) {
                                     if ($_POST['email'] === '') {
-                                        echo '<p class="help has-text-white has-background-danger-dark">This field is required</p>';
+                                        echo '<p class="help is-size-6 has-text-white has-background-danger-dark">This field is required</p>';
+                                    } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+                                        echo '<p class="help is-size-6 has-text-white has-background-danger-dark">This email is invalid</p>';
                                     }
                                 }
                             ?>
@@ -118,7 +125,7 @@
                             <?php 
                                 if (isset($_POST['country'])) {
                                     if ($_POST['country'] === '') {
-                                        echo '<p class="help has-text-white">This field is required</p>';
+                                        echo '<p class="help is-size-6 has-text-white">This field is required</p>';
                                     }
                                 }
                             ?>
@@ -148,7 +155,7 @@
                             <?php 
                                 if (isset($_POST['country'])) {
                                     if ($_POST['country'] === '') {
-                                        echo '<p class="help has-text-white">This field is required</p>';
+                                        echo '<p class="help is-size-6 has-text-white">This field is required</p>';
                                     }
                                 }
                             ?>
@@ -168,7 +175,7 @@
                             <?php 
                                 if (isset($_POST['message'])) {
                                     if ($_POST['message'] === '') {
-                                        echo '<p class="help has-text-white has-background-danger-dark">This field is required</p>';
+                                        echo '<p class="help is-size-6 has-text-white has-background-danger-dark">This field is required</p>';
                                     }
                                 }
                             ?>
@@ -185,13 +192,6 @@
                 </div>
 
             </form>
-        </div>
-    </section>
-    <section class="section">
-        <div class="columns has-text-centered">
-            <div class="column is-4 is-offset-4 has-text-white">
-                <?php include './assets/php/form.php'?>
-            </div>
         </div>
     </section>
 </body>

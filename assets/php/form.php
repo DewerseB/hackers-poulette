@@ -81,7 +81,7 @@
             // print_r($form);
             // echo "</p>";
         } catch (Exception $e) {
-            print_r("<p class='has-background-danger-dark'>Cannot validate the form:<br>" . $e->getMessage() . "</p>");
+            print_r("<p class='py-4 mx-1 is-size-5 has-background-danger-dark'>Cannot validate the form:<br>" . $e->getMessage() . "</p>");
         }
 
         if ($formIsValid) try {
@@ -112,9 +112,9 @@
             $mail->send();
             //print_r($mail->Body);
 
-            print_r("<p class='has-background-success-dark'>Form sent.<br>We sent you a confirmation email.</p>");
+            print_r("<p class='py-4 is-size-5 has-background-success-dark'>Form sent.<br>We sent you a confirmation email.</p>");
         } catch (Exception $e) {
-            print_r("<p class='has-background-danger-dark'>Cannot send the mail:<br>" . $e->getMessage() . "</p>");
+            print_r("<p class='py-4 is-size-5 has-background-danger-dark'>Cannot send the mail:<br>" . $e->getMessage() . "</p>");
         }
 
     }
