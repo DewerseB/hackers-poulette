@@ -63,6 +63,10 @@
         function getFullName() {
             return $this->firstname . " " . $this->lastname;
         }
+
+        function getMailBody($formSubjects) {
+            return "From: " . $this->getFullName() . "\nEmail: " . $this->email . "\nCountry: " . $this->country . "\n\nSubject: " . array_search($this->subject, $formSubjects, true) . "\n\n" . $this->message;
+        }
     }
 
     if (isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['gender']) && isset($_POST['email']) && isset($_POST['country']) && isset($_POST['subject']) && isset($_POST['message']) && isset($_POST['honeypot']) && isset($_POST['submit'])) {
@@ -101,20 +105,15 @@
             // Content
             $mail->setFrom($form->email, $form->getFullName());
             //$mail->isHTML(true);                                  // Set email format to HTML
-            $mail->Subject = $form->subject;
-            $mail->Body    = $form->message;
+            $mail->Subject = array_search($form->subject, $formSubjects, true);
+            $mail->Body    = $form->getMailBody($formSubjects);
             //$mail->AltBody = $form->message;
 
             $mail->send();
-            //print_r($mail);
-            
-            foreach($_POST as $field) {
-                $_POST[$field] = '';
-            }
+            //print_r($mail->Body);
 
             print_r("<p class='has-background-success-dark'>Form sent.<br>We sent you a confirmation email.</p>");
         } catch (Exception $e) {
-            //echo 'Caught exception: '. $e->getMessage() ."\n";
             print_r("<p class='has-background-danger-dark'>Cannot send the mail:<br>" . $e->getMessage() . "</p>");
         }
 

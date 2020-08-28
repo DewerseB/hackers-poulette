@@ -55,13 +55,15 @@
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <label class="radio" for="form-genderm">
+                                <label class="radio">
                                     <input id="form-genderm" type="radio" name="gender" value="m" <?php echo (isset($_POST['gender']) && $_POST['gender'] === 'm') ? 'checked' : '' ?> required>
                                     M
+                                    <label class="screen-reader-only" for="form-genderm">Gender - male</label>
                                 </label>
-                                <label class="radio" for="form-genderf">
+                                <label class="radio">
                                     <input id="form-genderf" type="radio" name="gender" value="f" <?php echo (isset($_POST['gender']) && $_POST['gender'] === 'f') ? 'checked' : '' ?> required>
                                     F
+                                    <label class="screen-reader-only" for="form-genderf">Gender - female</label>
                                 </label>
                             </div>
                             <?php 
