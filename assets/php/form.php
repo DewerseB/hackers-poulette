@@ -68,7 +68,7 @@
         
         $form = new ContactForm($_POST);
         $formIsValid = false;
-        echo realpath('') . '<br>';
+        
         try {
             $form->validateForm($formCountries, $formSubjects);
             $formIsValid = true;
