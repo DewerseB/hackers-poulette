@@ -27,6 +27,7 @@
 The project is a form gathering, sanitizing, validating then sending via mail informations to contact the support of a company.<br />
 Challenge made in 4 days by Bastien Dewerse at [BeCode](https://becode.org/)<br />
 Deadline: 28/08/2020
+A demo is available [here](https://hackers-poulette-form-project.herokuapp.com/).
 
 ### The mission
 
