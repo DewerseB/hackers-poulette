@@ -100,7 +100,4 @@ Bastien Dewerse - bastien.dewerse@example.com
 
 Project Link: [https://github.com/DewerseB/hackers-poulette](https://github.com/DewerseB/hackers-poulette)
 
-
-
 <!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
